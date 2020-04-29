@@ -30,7 +30,6 @@ public class Enemy
     public Enemy(DevMath.Vector2 position)
     {
         visual = Resources.Load<Texture2D>("pacman");
-
         Circle = new DevMath.Circle();
         Circle.Radius = visual.width * .5f;
 

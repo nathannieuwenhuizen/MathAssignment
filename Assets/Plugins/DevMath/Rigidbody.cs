@@ -17,9 +17,9 @@ namespace DevMath
         public float force = 150.0f;
         public float dragCoefficient = .47f;
 
-        public void AddForce(Vector2 forceDirection, float deltaTime)
+        public void AddForce(Vector2 forceDirection, float deltaTime) //needs testing
         {
-            throw new NotImplementedException();
+            Velocity += forceDirection * deltaTime;
         }
     }
 }

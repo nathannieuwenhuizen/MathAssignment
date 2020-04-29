@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace DevMath
 {
+    [System.Serializable]
+
     public struct Vector2
     {
         public float x;
@@ -39,19 +42,26 @@ namespace DevMath
         {
             return lhs.Normalized.x * rhs.Normalized.x + lhs.Normalized.y * rhs.Normalized.y;
         }
+        public static float DotNotNormalized(Vector2 lhs, Vector2 rhs)
+        {
+            return lhs.x * rhs.x + lhs.y * rhs.y;
+        }
 
         public static Vector2 Lerp(Vector2 a, Vector2 b, float t)
         {
-            throw new NotImplementedException();
+            return a * (1 - t) + b * t;
         }
 
-        public static float Angle(Vector2 lhs, Vector2 rhs)
-        {
-            throw new NotImplementedException();
+        public static float Angle(Vector2 lhs, Vector2 rhs) //in radians
+        { 
+            float dot = DotNotNormalized(lhs, rhs);
+            float productOfMagnitudes = (lhs.Magnitude * rhs.Magnitude);
+            return (float)Math.Acos(  dot / productOfMagnitudes);
         }
 
-        public static Vector2 DirectionFromAngle(float angle)
+        public static Vector2 DirectionFromAngle(float angle) //in radians
         {
+            return new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle));
             throw new NotImplementedException();
         }
 
