@@ -19,7 +19,7 @@ namespace DevMath
 
         public void AddForce(Vector2 forceDirection, float deltaTime) //needs testing
         {
-            Velocity += forceDirection * deltaTime;
+            Velocity += -forceDirection * deltaTime;
         }
     }
 }

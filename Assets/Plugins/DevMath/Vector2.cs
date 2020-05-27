@@ -53,14 +53,17 @@ namespace DevMath
         }
 
         public static float Angle(Vector2 lhs, Vector2 rhs) //in radians
-        { 
-            float dot = DotNotNormalized(lhs, rhs);
-            float productOfMagnitudes = (lhs.Magnitude * rhs.Magnitude);
-            return (float)Math.Acos(  dot / productOfMagnitudes);
+        {
+            float angle = (float)(Math.Atan2(rhs.y, rhs.x) - Math.Atan2(lhs.y, lhs.x));
+            return angle;
+            //float dot = DotNotNormalized(lhs, rhs);
+            //float productOfMagnitudes = (lhs.Normalized.Magnitude * rhs.Normalized.Magnitude);
+            //return (float)Math.Acos(  dot / productOfMagnitudes);
         }
 
         public static Vector2 DirectionFromAngle(float angle) //in radians
         {
+            angle = DevMath.DegToRad(angle);
             return new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle));
             throw new NotImplementedException();
         }
