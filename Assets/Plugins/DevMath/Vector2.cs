@@ -65,7 +65,6 @@ namespace DevMath
         {
             angle = DevMath.DegToRad(angle);
             return new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle));
-            throw new NotImplementedException();
         }
 
         public static Vector2 operator +(Vector2 lhs, Vector2 rhs)

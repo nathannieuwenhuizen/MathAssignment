@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DevMath;
 
 public class Game : MonoBehaviour
 {
@@ -43,6 +44,14 @@ public class Game : MonoBehaviour
 
         if(player == null)
         {
+            Color a = GUI.color;
+            Color b = GUI.color;
+            a.a = .5f;
+            b.a = 1f;
+            Color endColor = Color.red;
+            endColor.a = DevMath.DevMath.Lerp(a.a, b.a, (1+ Mathf.Sin(Time.time)) / 2f);
+            GUI.color = endColor;
+
             //Use Sin to animate the colour of the text (GUI.color) between alpha 0.5 and 1.0
             GUI.Label(new Rect(Screen.width * .5f - 50.0f, Screen.height * .5f - 10.0f, 100.0f, 100.0f), "YOU LOSE!");
         }
@@ -94,6 +103,6 @@ public class Game : MonoBehaviour
                     break;
                 }
             }
-        }
+        } 
     }
 }
